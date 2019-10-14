@@ -1,0 +1,36 @@
+def Help():
+    print('HELP___')
+    print('DONE -> Terminate the program')
+    print('HELP -> Help')
+    print('SHOW -> Show the list of Items as your input.')
+
+def shopping_list(): # method to maintain shopping list
+    # instructions for the user.
+    print('Your Sabziwala welcomes you!')
+    print('I am here to note down the items you want to purchase.')
+    print('Do not worry, simply take this as a groccers list.')
+    print('Now, ',end = '')
+    
+    shopping_list = list() # creating list with calling constructor of list class
+    print('Enter Item List: ')
+    while(True): # condition is always true, that is, infinite loop
+        try:
+            item = input('> ')
+        except Exception:
+            print('Invalid input.')
+        else:
+            if(item in ['DONE','Done','done']):
+                for item in shopping_list:
+                    print(item)
+                break
+            elif(item in ['help','Help','HELP']):
+                Help()
+            elif(item in ['show', 'Show', 'SHOW']):
+                for item in shopping_list:
+                    print(item)
+            else:
+                shopping_list.append(item)
+        finally:
+            pass
+            
+shopping_list()

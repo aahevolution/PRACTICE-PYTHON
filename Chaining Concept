@@ -1,0 +1,15 @@
+
+import random
+
+print(random.randint(1,6))
+print(random.choice(['rock','paper','scissor']))
+
+#chain concept
+print(len(input('Enter a Sentence: ').split()))
+
+some_list = [2,3,3,2,1,2,32,2,12,3,3]
+for element in some_list:
+    if(element == 3):
+        some_list.remove(element)
+print(some_list)
+

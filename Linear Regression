@@ -1,0 +1,49 @@
+# importing basic files
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as mpl
+# sklearn contains all algorithms of supervised & unsupervised learning
+from sklearn.linear_model import LinearRegression
+
+# loading the csv file into dataset
+dataset = pd.read_csv('student_scores.csv')
+
+# plotting the data in 2D representation
+dataset.plot(x = 'Hours', y = 'Scores', style = 'o') # style = 'o' means points
+mpl.title('Study Hours VS Marks')
+
+# assigning label to the axes
+mpl.xlabel('Hours Studied')
+mpl.ylabel('Scores')
+
+# splitting the dataset into features & labels
+features = dataset.iloc[:,:-1].values
+labels = dataset.iloc[:,1].values # confusion with iloc & its indexing
+
+# training the model
+regressor = LinearRegression() # creating regressor object 
+# regressor object will train the model
+
+# fit method draws the line of prediction
+# it find the best fit line by 
+regressor.fit(features, labels)
+
+print('Y-Intercept: ' +str(regressor.intercept_))
+print('Slope: ' + str(regressor.coef_))
+'''
+Intercept is the point at which the line of prediction touches the Y-axis
+Coef is Slope of Line of Prediction.
+'''
+
+input_predict = int(input('Enter Hours: '))
+print(regressor.coef_*input_predict + regressor.intercept_)
+#print(regressor.predict(input_predict))
+
+# Visualising the  results
+mpl.scatter(features, labels, color = 'red')
+mpl.plot(features, regressor.predict(features), color = 'blue')
+mpl.title('Study Hours and Exam Score')
+mpl.xlabel('Study Hours')
+mpl.ylabel('Exam Score: Marks')
+mpl.show()
+print(regressor.predict(input_predict))

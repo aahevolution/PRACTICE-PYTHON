@@ -1,0 +1,14 @@
+salaries = list()
+while(True):
+    salary = input("Enter the Salary: ")
+    if((salary == ' ') or (salary == '')):#ASCII for Enter is 13, signifies blank input
+        break
+    else:
+        salaries.append(salary)
+        
+cleansed_salaries = list();
+
+for salary in salaries:
+    cleansed_salaries.append(int(''.join(salary[1:].split(','))))
+    
+print(cleansed_salaries)
